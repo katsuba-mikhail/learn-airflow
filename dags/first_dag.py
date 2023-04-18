@@ -10,7 +10,7 @@ default_arg = {
 }
 
 with DAG(
-    dag_id='first_dag_v4',
+    dag_id='first_dag_v5',
     default_args=default_arg,
     description='First dag for learning',
     start_date=datetime(2023, 4, 12),
@@ -33,8 +33,14 @@ with DAG(
         bash_command='echo task3 run with task2 after task1'
     )
 
-#  task1 >> task2 = task1.set_downstream(task2)
-#  task1 >> task3 = task1.set_downstream(task3)
+    # Task dependency method 1
+    # task1.set_downstream(task2)
+    # task1.set_downstream(task3)
 
-    task1 >> task2
-    task1 >> task3
+    # Task dependency method 2
+    # task1 >> task2
+    # task1 >> task3
+
+    # Task dependency method 3
+    task1 >> [task2, task3]
+
