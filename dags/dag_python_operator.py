@@ -9,17 +9,19 @@ default_args = {
 }
 
 def hello(age, ti):
-    name = ti.xcom_pull(task_ids='get_name')
+    first_name = ti.xcom_pull(task_ids='get_name', key='first_name')
+    last_name = ti.xcom_pull(task_ids='get_name', key='last_name')
     print(f'Hello world! '
-          f'My name is {name} '
+          f'My name is {first_name} {last_name}. '
           f'I am {age} years old.')
 
-def get_name():
-    return 'Airflow'
+def get_name(ti):
+    ti.xcom_push(key='first_name', value='Air')
+    ti.xcom_push(key='last_name', value='Flow')
 
 with DAG(
     default_args=default_args,
-    dag_id='dag_python_operator_v4',
+    dag_id='dag_python_operator_v5',
     start_date=datetime(2023, 4, 12),
     schedule_interval='@daily',
     catchup=False,
