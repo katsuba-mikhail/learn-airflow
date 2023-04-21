@@ -7,3 +7,5 @@
 [First_dag](https://github.com/katsuba-mikhail/learn-airflow/blob/main/dags/first_dag.py) is a simply example using BashOperator.
 
 [dag_python_operator](https://github.com/katsuba-mikhail/learn-airflow/blob/main/dags/dag_python_operator.py) learning how to use python commands in dag.
+
+[dag_taskflow_api](https://github.com/katsuba-mikhail/learn-airflow/blob/main/dags/dag_taskflow_api.py) learning how to use taskflow api.
