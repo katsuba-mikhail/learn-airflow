@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
-from airflow.decorators import dag, task
-from airflow.operators.python import PythonOperator
+from airflow import DAG
+from airflow.operators.bash import BashOperator
 
 default_args = {
     'owner': 'learner',
@@ -8,18 +8,18 @@ default_args = {
     'retry_delay': timedelta(minutes=5)
 }
 
-@dag(
-    dag_id='dag_catcup_backfill_v1',
+with DAG(
+    dag_id='dag_catcup_backfill_v2',
     default_args=default_args,
     start_date=datetime(2023, 4, 12),
     schedule_interval='@daily',
-    catchup=True,
-)
+    catchup=False,
+) as dag:
 
-def dag1():
+    task1 = BashOperator(
+        task_id='task1',
+        bash_command='echo in terminal use backfill command: '
+        + 'airflow dags backfill -s 2023-04-10 -e 2023-04-20 dag_catcup_backfill_v2'
+    )
 
-    @task()
-    def task1():
-        print('Catchup test')
-
-new_dag = dag1()
+task1
