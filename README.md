@@ -12,3 +12,5 @@
 
 [dag_catchup_backfill](https://github.com/katsuba-mikhail/learn-airflow/blob/main/dags/dag_catchup_backfill.py) learning how to use catchup and backfill.
 
+[dag_cron](https://github.com/katsuba-mikhail/learn-airflow/blob/main/dags/dag_cron.py) learning how to use cron in AirFlow.
+
