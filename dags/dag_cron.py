@@ -10,10 +10,9 @@ default_args = {
 
 @dag(
     default_args=default_args,
-    dag_id='dag_cron_v2',
+    dag_id='dag_cron_v3',
     start_date=datetime(2023, 4, 20),
- 
-    schedule_interval='0 0 * * *',
+    schedule_interval='59 12 * APR THU',
 )
 
 def dag_cron():
